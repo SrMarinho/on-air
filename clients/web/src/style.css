@@ -1,0 +1,52 @@
+/* TODO(assets/fonts): self-host woff2 per design system §4; Google Fonts until then. */
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Barlow:wght@500;700&family=Barlow+Condensed:wght@600;800&display=swap');
+@import 'tailwindcss';
+@import './design/tokens.css';
+
+html,
+body,
+#app {
+  margin: 0;
+  min-height: 100%;
+  background: var(--color-fundo);
+  color: var(--color-texto);
+  font-family: var(--font-sans);
+}
+
+@layer components {
+  /* Design system §17.1: 3px ink outline + hard shadow, button sinks when pressed. */
+  .btn {
+    @apply inline-flex h-13 items-center justify-center gap-2 rounded-md border-3 border-tinta px-6 font-label text-[22px] leading-6 font-extrabold tracking-[0.04em] uppercase transition-transform duration-120 ease-out select-none;
+    box-shadow: 0 4px 0 var(--color-sombra-pop);
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--color-sombra-pop);
+  }
+  .btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 var(--color-sombra-pop);
+  }
+  .btn:focus-visible {
+    outline: 3px solid var(--color-foco);
+    outline-offset: 3px;
+  }
+  .btn:disabled {
+    @apply cursor-not-allowed opacity-40;
+    box-shadow: none;
+    transform: none;
+  }
+  .btn-primario {
+    @apply bg-no-ar text-creme;
+  }
+  .btn-secundario {
+    @apply bg-fundo-elevado text-texto;
+  }
+  .btn-fantasma {
+    @apply border-linha-forte bg-transparent text-texto;
+    box-shadow: none;
+  }
+  .chip {
+    @apply rounded-sm border-3 border-tinta bg-fundo-elevado px-3 py-1 font-label text-sm font-extrabold tracking-[0.08em] uppercase;
+  }
+}
