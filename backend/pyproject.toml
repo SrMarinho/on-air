@@ -1,0 +1,52 @@
+[project]
+name = "onair"
+version = "0.1.0"
+description = "On-Air authoritative game server"
+readme = "README.md"
+authors = [
+    { name = "Matheus Marinho", email = "temarinho76@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.20.0",
+    "argon2-cffi>=25.1.0",
+    "asyncpg>=0.32.0",
+    "email-validator>=2.3.0",
+    "fastapi>=0.142.4",
+    "pydantic-settings>=2.15.0",
+    "pyjwt>=2.15.1",
+    "sqlalchemy[asyncio]>=2.1.4",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.28,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "aiosqlite>=0.22.1",
+    "httpx>=0.28.1",
+    "mypy>=2.4.0",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "ruff>=0.16.10",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM", "RUF", "ASYNC"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = []
+mypy_path = "src"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["src"]
