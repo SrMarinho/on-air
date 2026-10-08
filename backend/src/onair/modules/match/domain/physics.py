@@ -19,8 +19,8 @@ class PhysicsConfig:
     jump_buffer_time: float = 0.12
     wall_slide_speed: float = 180.0
     wall_jump_push: float = 320.0
-    player_width: float = 24.0
-    player_height: float = 30.0
+    player_width: float = 22.0  # 0.7 tile (design system §5.1)
+    player_height: float = 35.0  # 1.1 tile
 
 
 @dataclass(frozen=True, slots=True)

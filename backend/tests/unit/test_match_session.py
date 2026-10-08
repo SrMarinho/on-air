@@ -132,7 +132,7 @@ class TestScoring:
     def test_solo_finisher_gets_bonus(self) -> None:
         a, b = uuid4(), uuid4()
         scores = {s.player_id: s for s in RoundScorer(self.rules).score([a, b], [a])}
-        assert scores[a].gained == self.rules.goal + self.rules.solo
+        assert scores[a].gained == self.rules.goal + self.rules.first + self.rules.solo
         assert scores[b].gained == 0
 
     def test_first_of_many_gets_first_bonus(self) -> None:

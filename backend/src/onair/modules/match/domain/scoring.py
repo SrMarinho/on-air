@@ -4,10 +4,10 @@ from uuid import UUID
 
 @dataclass(frozen=True, slots=True)
 class ScoringRules:
-    goal: int = 10
-    first: int = 4
-    solo: int = 6
-    target: int = 50
+    goal: int = 2  # CHEGOU
+    first: int = 1  # PRIMEIRO A CHEGAR
+    solo: int = 1  # EXCLUSIVA!
+    target: int = 12
 
 
 @dataclass(slots=True)
@@ -22,7 +22,7 @@ class RoundScore:
 
 
 class RoundScorer:
-    """Ultimate-Chicken-Horse style: nobody scores if everybody (or nobody) made it."""
+    """Audience meter (design system §15.9): nobody scores if everybody (or nobody) made it."""
 
     def __init__(self, rules: ScoringRules) -> None:
         self._rules = rules
@@ -35,8 +35,8 @@ class RoundScorer:
             return list(scores.values())
         for pid in finishers:
             scores[pid].award(self._rules.goal, "goal")
+        if multiplayer:
+            scores[finishers[0]].award(self._rules.first, "first")
         if multiplayer and len(finishers) == 1:
             scores[finishers[0]].award(self._rules.solo, "solo")
-        elif multiplayer:
-            scores[finishers[0]].award(self._rules.first, "first")
         return list(scores.values())

@@ -12,7 +12,8 @@ from onair.modules.match.domain.physics import PhysicsConfig
 from onair.modules.match.domain.session import GameSession
 from onair.modules.match.domain.systems import build_scheduler
 
-PLAYER_COLORS = (0xF5C518, 0x3FA7F5, 0xF55D3E, 0x6BCB77, 0xB07CF5, 0xF58AC8)
+# J1..J8 from shared/design/tokens.json (each paired with a shape client-side).
+PLAYER_COLORS = (0xFF7A2F, 0x2FB8F0, 0xFF5FA2, 0xB8E04A, 0xFFC93C, 0x19B5A5, 0xC9B9A6, 0x9B7BFF)
 
 
 class SessionFactory:
