@@ -1,0 +1,117 @@
+{
+  "praticavel": {
+    "texture": "structures/praticavel/praticavel.png",
+    "category": "structure",
+    "tiles": {
+      "w": 1,
+      "h": 1
+    },
+    "serverItem": "block",
+    "bounds": {
+      "x": 163,
+      "y": 185,
+      "w": 952,
+      "h": 859
+    }
+  },
+  "praticavel-longo": {
+    "texture": "structures/praticavel/praticavel-longo.png",
+    "category": "structure",
+    "tiles": {
+      "w": 3,
+      "h": 1
+    },
+    "serverItem": "plank",
+    "bounds": {
+      "x": 124,
+      "y": 232,
+      "w": 1924,
+      "h": 241
+    }
+  },
+  "rotating-stage": {
+    "texture": "structures/rotating-stage/rotating-stage.png",
+    "category": "structure",
+    "tiles": {
+      "w": 4,
+      "h": 1
+    },
+    "bounds": {
+      "x": 48,
+      "y": 221,
+      "w": 2077,
+      "h": 347
+    }
+  },
+  "stairs": {
+    "texture": "structures/stairs/stairs.png",
+    "category": "structure",
+    "tiles": {
+      "w": 2,
+      "h": 2
+    },
+    "bounds": {
+      "x": 91,
+      "y": 145,
+      "w": 1197,
+      "h": 893
+    }
+  },
+  "camera-rail": {
+    "texture": "structures/camera-rail/camera-rail.png",
+    "category": "structure",
+    "tiles": {
+      "w": 4,
+      "h": 2
+    },
+    "serverItem": "moving_platform",
+    "bounds": {
+      "x": 34,
+      "y": 109,
+      "w": 1711,
+      "h": 617
+    }
+  },
+  "stage-lift": {
+    "texture": "structures/stage-lift/stage-lift.png",
+    "category": "structure",
+    "tiles": {
+      "w": 2,
+      "h": 2
+    },
+    "bounds": {
+      "x": 84,
+      "y": 151,
+      "w": 1136,
+      "h": 987
+    }
+  },
+  "start-platform": {
+    "texture": "fixed/start-platform.png",
+    "category": "fixed",
+    "tiles": {
+      "w": 2,
+      "h": 1
+    },
+    "bounds": {
+      "x": 140,
+      "y": 270,
+      "w": 1494,
+      "h": 352
+    }
+  },
+  "golden-microphone": {
+    "texture": "fixed/golden-microphone.png",
+    "category": "fixed",
+    "tiles": {
+      "w": 2,
+      "h": 3
+    },
+    "bounds": {
+      "x": 158,
+      "y": 52,
+      "w": 709,
+      "h": 1439
+    }
+  }
+}

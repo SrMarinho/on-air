@@ -1,0 +1,65 @@
+{
+  "texture": "studio-floor.png",
+  "columns": 4,
+  "rows": 2,
+  "tiles": [
+    "top",
+    "top-left",
+    "top-right",
+    "top-narrow",
+    "top-left-alt",
+    "top-right-alt",
+    "fill",
+    "fill-base"
+  ],
+  "frames": {
+    "top": {
+      "x": 59,
+      "y": 63,
+      "w": 380,
+      "h": 345
+    },
+    "top-left": {
+      "x": 484,
+      "y": 50,
+      "w": 379,
+      "h": 359
+    },
+    "top-right": {
+      "x": 913,
+      "y": 50,
+      "w": 377,
+      "h": 358
+    },
+    "top-narrow": {
+      "x": 1337,
+      "y": 50,
+      "w": 387,
+      "h": 358
+    },
+    "top-left-alt": {
+      "x": 58,
+      "y": 453,
+      "w": 377,
+      "h": 357
+    },
+    "top-right-alt": {
+      "x": 487,
+      "y": 454,
+      "w": 375,
+      "h": 354
+    },
+    "fill": {
+      "x": 914,
+      "y": 464,
+      "w": 375,
+      "h": 341
+    },
+    "fill-base": {
+      "x": 1335,
+      "y": 464,
+      "w": 380,
+      "h": 341
+    }
+  }
+}

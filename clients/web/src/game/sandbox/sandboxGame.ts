@@ -8,6 +8,7 @@ import { loadAnimationSet } from '@/game/render/animationSet'
 import { Camera } from '@/game/render/camera'
 import { CharacterView } from '@/game/render/characterView'
 import { LevelView } from '@/game/render/levelView'
+import { loadStageArt } from '@/game/render/stageArt'
 
 const RESPAWN_DELAY = 1.2
 const MAX_STEPS_PER_FRAME = 5
@@ -37,8 +38,9 @@ export class SandboxGame {
     host.appendChild(this.app.canvas)
     this.level = parseLevel(layout)
     this.camera = new Camera(this.level.pixelWidth, this.level.pixelHeight)
-    this.character = new CharacterView(await loadAnimationSet(character))
-    this.world.addChild(new LevelView(this.level).container, this.character.container, this.hitbox)
+    const [animations, stageArt] = await Promise.all([loadAnimationSet(character), loadStageArt()])
+    this.character = new CharacterView(animations)
+    this.world.addChild(new LevelView(this.level, stageArt).container, this.character.container, this.hitbox)
     this.app.stage.addChild(this.world)
     this.hitbox.visible = false
     this.input.attach()
