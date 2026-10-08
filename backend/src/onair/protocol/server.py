@@ -106,6 +106,13 @@ class SnapshotMessage(Message):
     entities: list[EntityState]
 
 
+class LevelItemsMessage(Message):
+    """Full list of placed static items; sent whenever it changes."""
+
+    type: Literal["level_items"] = "level_items"
+    items: list[EntityState]
+
+
 class MatchEndedMessage(Message):
     type: Literal["match_ended"] = "match_ended"
     winner_id: UUID | None
@@ -126,6 +133,7 @@ ServerMessage = Annotated[
     | PhaseChangedMessage
     | ItemPickedMessage
     | SnapshotMessage
+    | LevelItemsMessage
     | MatchEndedMessage
     | PongMessage,
     Field(discriminator="type"),
