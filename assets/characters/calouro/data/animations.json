@@ -1,0 +1,186 @@
+{
+  "idle": {
+    "texture": "calouro-idle.png",
+    "frames": 10,
+    "columns": 5,
+    "duration": 800,
+    "loop": true,
+    "frameWidth": 396,
+    "frameHeight": 396,
+    "anchor": {
+      "x": 0.501,
+      "y": 0.985
+    },
+    "scale": 1.0,
+    "referenceHeight": 381.5
+  },
+  "runStart": {
+    "texture": "calouro-run-start.png",
+    "frames": 2,
+    "columns": 2,
+    "duration": 140,
+    "loop": false,
+    "next": "run",
+    "frameWidth": 991,
+    "frameHeight": 793,
+    "anchor": {
+      "x": 0.49,
+      "y": 0.938
+    },
+    "scale": 0.5477
+  },
+  "run": {
+    "texture": "calouro-run.png",
+    "frames": 10,
+    "columns": 5,
+    "duration": 500,
+    "loop": true,
+    "frameWidth": 396,
+    "frameHeight": 396,
+    "anchor": {
+      "x": 0.45,
+      "y": 0.962
+    },
+    "scale": 1.0597
+  },
+  "brake": {
+    "texture": "calouro-brake.png",
+    "frames": 4,
+    "columns": 4,
+    "duration": 240,
+    "loop": false,
+    "next": "idle",
+    "frameWidth": 543,
+    "frameHeight": 724,
+    "anchor": {
+      "x": 0.518,
+      "y": 0.948
+    },
+    "scale": 0.5952
+  },
+  "jumpAnticipation": {
+    "texture": "calouro-jump-anticipation.png",
+    "frames": 3,
+    "columns": 3,
+    "duration": 120,
+    "loop": false,
+    "next": "jumpRise",
+    "frameWidth": 723,
+    "frameHeight": 724,
+    "anchor": {
+      "x": 0.544,
+      "y": 0.93
+    },
+    "scale": 0.6358
+  },
+  "jumpRise": {
+    "texture": "calouro-jump-rise.png",
+    "frames": 4,
+    "columns": 4,
+    "duration": 240,
+    "loop": false,
+    "next": "jumpApex",
+    "frameWidth": 543,
+    "frameHeight": 724,
+    "anchor": {
+      "x": 0.492,
+      "y": 0.956
+    },
+    "scale": 0.6583
+  },
+  "jumpApex": {
+    "texture": "calouro-jump-apex.png",
+    "frames": 2,
+    "columns": 2,
+    "duration": 120,
+    "loop": false,
+    "next": "fall",
+    "frameWidth": 1086,
+    "frameHeight": 724,
+    "anchor": {
+      "x": 0.49,
+      "y": 0.95
+    },
+    "scale": 0.6017
+  },
+  "fall": {
+    "texture": "calouro-fall.png",
+    "frames": 4,
+    "columns": 4,
+    "duration": 280,
+    "loop": true,
+    "frameWidth": 543,
+    "frameHeight": 724,
+    "anchor": {
+      "x": 0.497,
+      "y": 0.931
+    },
+    "scale": 0.6417
+  },
+  "land": {
+    "texture": "calouro-land.png",
+    "frames": 5,
+    "columns": 5,
+    "duration": 260,
+    "loop": false,
+    "next": "idle",
+    "frameWidth": 434,
+    "frameHeight": 724,
+    "anchor": {
+      "x": 0.5,
+      "y": 0.957
+    },
+    "scale": 0.7
+  },
+  "build": {
+    "texture": "calouro-build.png",
+    "frames": 4,
+    "columns": 4,
+    "duration": 600,
+    "loop": true
+  },
+  "turn": {
+    "texture": "calouro-turn.png",
+    "frames": 4,
+    "columns": 4,
+    "duration": 220,
+    "loop": false,
+    "next": "run",
+    "frameWidth": 543,
+    "frameHeight": 724,
+    "anchor": {
+      "x": 0.486,
+      "y": 0.89
+    },
+    "scale": 0.667
+  },
+  "hit": {
+    "texture": "calouro-hit.png",
+    "frames": 4,
+    "columns": 4,
+    "duration": 280,
+    "loop": false,
+    "next": "idle",
+    "frameWidth": 543,
+    "frameHeight": 724,
+    "anchor": {
+      "x": 0.527,
+      "y": 0.914
+    },
+    "scale": 0.6444
+  },
+  "death": {
+    "texture": "calouro-death.png",
+    "frames": 8,
+    "columns": 4,
+    "duration": 700,
+    "loop": false,
+    "frameWidth": 443,
+    "frameHeight": 443,
+    "anchor": {
+      "x": 0.527,
+      "y": 1.0
+    },
+    "scale": 0.9646
+  }
+}

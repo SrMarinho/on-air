@@ -1,0 +1,10 @@
+{
+  "id": "calouro",
+  "name": "Calouro",
+  "display_height": 56,
+  "hitbox": {
+    "w": 24,
+    "h": 30
+  },
+  "portrait": "characters/calouro/portraits/calouro-portrait.png"
+}
