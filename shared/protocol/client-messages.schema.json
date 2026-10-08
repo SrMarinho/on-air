@@ -1,0 +1,236 @@
+{
+  "$defs": {
+    "AuthMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "auth",
+          "default": "auth",
+          "title": "Type",
+          "type": "string"
+        },
+        "token": {
+          "title": "Token",
+          "type": "string"
+        }
+      },
+      "required": [
+        "token"
+      ],
+      "title": "AuthMessage",
+      "type": "object"
+    },
+    "InputMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "input",
+          "default": "input",
+          "title": "Type",
+          "type": "string"
+        },
+        "seq": {
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "left": {
+          "default": false,
+          "title": "Left",
+          "type": "boolean"
+        },
+        "right": {
+          "default": false,
+          "title": "Right",
+          "type": "boolean"
+        },
+        "jump": {
+          "default": false,
+          "title": "Jump",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "seq"
+      ],
+      "title": "InputMessage",
+      "type": "object"
+    },
+    "JoinRoomMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "join_room",
+          "default": "join_room",
+          "title": "Type",
+          "type": "string"
+        },
+        "room_id": {
+          "format": "uuid",
+          "title": "Room Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "room_id"
+      ],
+      "title": "JoinRoomMessage",
+      "type": "object"
+    },
+    "LeaveRoomMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "leave_room",
+          "default": "leave_room",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "title": "LeaveRoomMessage",
+      "type": "object"
+    },
+    "PickItemMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "pick_item",
+          "default": "pick_item",
+          "title": "Type",
+          "type": "string"
+        },
+        "offer_id": {
+          "minimum": 0,
+          "title": "Offer Id",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "offer_id"
+      ],
+      "title": "PickItemMessage",
+      "type": "object"
+    },
+    "PingMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "ping",
+          "default": "ping",
+          "title": "Type",
+          "type": "string"
+        },
+        "client_time": {
+          "title": "Client Time",
+          "type": "number"
+        }
+      },
+      "required": [
+        "client_time"
+      ],
+      "title": "PingMessage",
+      "type": "object"
+    },
+    "PlaceItemMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "place_item",
+          "default": "place_item",
+          "title": "Type",
+          "type": "string"
+        },
+        "tile_x": {
+          "title": "Tile X",
+          "type": "integer"
+        },
+        "tile_y": {
+          "title": "Tile Y",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tile_x",
+        "tile_y"
+      ],
+      "title": "PlaceItemMessage",
+      "type": "object"
+    },
+    "SetReadyMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "set_ready",
+          "default": "set_ready",
+          "title": "Type",
+          "type": "string"
+        },
+        "ready": {
+          "title": "Ready",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "ready"
+      ],
+      "title": "SetReadyMessage",
+      "type": "object"
+    },
+    "StartMatchMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "start_match",
+          "default": "start_match",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "title": "StartMatchMessage",
+      "type": "object"
+    }
+  },
+  "discriminator": {
+    "mapping": {
+      "auth": "#/$defs/AuthMessage",
+      "input": "#/$defs/InputMessage",
+      "join_room": "#/$defs/JoinRoomMessage",
+      "leave_room": "#/$defs/LeaveRoomMessage",
+      "pick_item": "#/$defs/PickItemMessage",
+      "ping": "#/$defs/PingMessage",
+      "place_item": "#/$defs/PlaceItemMessage",
+      "set_ready": "#/$defs/SetReadyMessage",
+      "start_match": "#/$defs/StartMatchMessage"
+    },
+    "propertyName": "type"
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/AuthMessage"
+    },
+    {
+      "$ref": "#/$defs/JoinRoomMessage"
+    },
+    {
+      "$ref": "#/$defs/LeaveRoomMessage"
+    },
+    {
+      "$ref": "#/$defs/SetReadyMessage"
+    },
+    {
+      "$ref": "#/$defs/StartMatchMessage"
+    },
+    {
+      "$ref": "#/$defs/InputMessage"
+    },
+    {
+      "$ref": "#/$defs/PickItemMessage"
+    },
+    {
+      "$ref": "#/$defs/PlaceItemMessage"
+    },
+    {
+      "$ref": "#/$defs/PingMessage"
+    }
+  ]
+}

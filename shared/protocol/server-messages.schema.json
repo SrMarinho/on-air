@@ -1,0 +1,648 @@
+{
+  "$defs": {
+    "AuthOkMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "auth_ok",
+          "default": "auth_ok",
+          "title": "Type",
+          "type": "string"
+        },
+        "player_id": {
+          "format": "uuid",
+          "title": "Player Id",
+          "type": "string"
+        },
+        "username": {
+          "title": "Username",
+          "type": "string"
+        }
+      },
+      "required": [
+        "player_id",
+        "username"
+      ],
+      "title": "AuthOkMessage",
+      "type": "object"
+    },
+    "EntityState": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "kind": {
+          "title": "Kind",
+          "type": "string"
+        },
+        "x": {
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "title": "Y",
+          "type": "number"
+        },
+        "w": {
+          "title": "W",
+          "type": "number"
+        },
+        "h": {
+          "title": "H",
+          "type": "number"
+        },
+        "vx": {
+          "default": 0.0,
+          "title": "Vx",
+          "type": "number"
+        },
+        "vy": {
+          "default": 0.0,
+          "title": "Vy",
+          "type": "number"
+        },
+        "player_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Player Id"
+        },
+        "state": {
+          "anyOf": [
+            {
+              "enum": [
+                "alive",
+                "dead",
+                "finished"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "State"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "x",
+        "y",
+        "w",
+        "h"
+      ],
+      "title": "EntityState",
+      "type": "object"
+    },
+    "ErrorMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "error",
+          "default": "error",
+          "title": "Type",
+          "type": "string"
+        },
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "ErrorMessage",
+      "type": "object"
+    },
+    "ItemOffer": {
+      "additionalProperties": false,
+      "properties": {
+        "offer_id": {
+          "title": "Offer Id",
+          "type": "integer"
+        },
+        "item": {
+          "title": "Item",
+          "type": "string"
+        },
+        "taken_by": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Taken By"
+        }
+      },
+      "required": [
+        "offer_id",
+        "item"
+      ],
+      "title": "ItemOffer",
+      "type": "object"
+    },
+    "ItemPickedMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "item_picked",
+          "default": "item_picked",
+          "title": "Type",
+          "type": "string"
+        },
+        "player_id": {
+          "format": "uuid",
+          "title": "Player Id",
+          "type": "string"
+        },
+        "offer_id": {
+          "title": "Offer Id",
+          "type": "integer"
+        },
+        "item": {
+          "title": "Item",
+          "type": "string"
+        }
+      },
+      "required": [
+        "player_id",
+        "offer_id",
+        "item"
+      ],
+      "title": "ItemPickedMessage",
+      "type": "object"
+    },
+    "LevelItemsMessage": {
+      "additionalProperties": false,
+      "description": "Full list of placed static items; sent whenever it changes.",
+      "properties": {
+        "type": {
+          "const": "level_items",
+          "default": "level_items",
+          "title": "Type",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/EntityState"
+          },
+          "title": "Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "title": "LevelItemsMessage",
+      "type": "object"
+    },
+    "LevelLayout": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "title": "Key",
+          "type": "string"
+        },
+        "width": {
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "title": "Height",
+          "type": "integer"
+        },
+        "tile_size": {
+          "title": "Tile Size",
+          "type": "integer"
+        },
+        "rows": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Rows",
+          "type": "array"
+        }
+      },
+      "required": [
+        "key",
+        "width",
+        "height",
+        "tile_size",
+        "rows"
+      ],
+      "title": "LevelLayout",
+      "type": "object"
+    },
+    "MatchEndedMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "match_ended",
+          "default": "match_ended",
+          "title": "Type",
+          "type": "string"
+        },
+        "winner_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Winner Id"
+        },
+        "scores": {
+          "items": {
+            "$ref": "#/$defs/ScoreLine"
+          },
+          "title": "Scores",
+          "type": "array"
+        }
+      },
+      "required": [
+        "winner_id",
+        "scores"
+      ],
+      "title": "MatchEndedMessage",
+      "type": "object"
+    },
+    "MatchPlayer": {
+      "additionalProperties": false,
+      "properties": {
+        "player_id": {
+          "format": "uuid",
+          "title": "Player Id",
+          "type": "string"
+        },
+        "username": {
+          "title": "Username",
+          "type": "string"
+        },
+        "color": {
+          "title": "Color",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "player_id",
+        "username",
+        "color"
+      ],
+      "title": "MatchPlayer",
+      "type": "object"
+    },
+    "MatchStartedMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "match_started",
+          "default": "match_started",
+          "title": "Type",
+          "type": "string"
+        },
+        "level": {
+          "$ref": "#/$defs/LevelLayout"
+        },
+        "players": {
+          "items": {
+            "$ref": "#/$defs/MatchPlayer"
+          },
+          "title": "Players",
+          "type": "array"
+        },
+        "target_score": {
+          "title": "Target Score",
+          "type": "integer"
+        },
+        "simulation_hz": {
+          "title": "Simulation Hz",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "level",
+        "players",
+        "target_score",
+        "simulation_hz"
+      ],
+      "title": "MatchStartedMessage",
+      "type": "object"
+    },
+    "PhaseChangedMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "phase_changed",
+          "default": "phase_changed",
+          "title": "Type",
+          "type": "string"
+        },
+        "phase": {
+          "enum": [
+            "pick",
+            "place",
+            "run",
+            "score",
+            "end"
+          ],
+          "title": "Phase",
+          "type": "string"
+        },
+        "round": {
+          "title": "Round",
+          "type": "integer"
+        },
+        "duration": {
+          "title": "Duration",
+          "type": "number"
+        },
+        "offers": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/ItemOffer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Offers"
+        },
+        "scores": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/ScoreLine"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scores"
+        }
+      },
+      "required": [
+        "phase",
+        "round",
+        "duration"
+      ],
+      "title": "PhaseChangedMessage",
+      "type": "object"
+    },
+    "PongMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "pong",
+          "default": "pong",
+          "title": "Type",
+          "type": "string"
+        },
+        "client_time": {
+          "title": "Client Time",
+          "type": "number"
+        },
+        "server_time": {
+          "title": "Server Time",
+          "type": "number"
+        }
+      },
+      "required": [
+        "client_time",
+        "server_time"
+      ],
+      "title": "PongMessage",
+      "type": "object"
+    },
+    "RoomMember": {
+      "additionalProperties": false,
+      "properties": {
+        "player_id": {
+          "format": "uuid",
+          "title": "Player Id",
+          "type": "string"
+        },
+        "username": {
+          "title": "Username",
+          "type": "string"
+        },
+        "ready": {
+          "title": "Ready",
+          "type": "boolean"
+        },
+        "is_host": {
+          "title": "Is Host",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "player_id",
+        "username",
+        "ready",
+        "is_host"
+      ],
+      "title": "RoomMember",
+      "type": "object"
+    },
+    "RoomStateMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "room_state",
+          "default": "room_state",
+          "title": "Type",
+          "type": "string"
+        },
+        "room_id": {
+          "format": "uuid",
+          "title": "Room Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "lobby",
+            "playing",
+            "finished"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "max_players": {
+          "title": "Max Players",
+          "type": "integer"
+        },
+        "members": {
+          "items": {
+            "$ref": "#/$defs/RoomMember"
+          },
+          "title": "Members",
+          "type": "array"
+        }
+      },
+      "required": [
+        "room_id",
+        "name",
+        "status",
+        "max_players",
+        "members"
+      ],
+      "title": "RoomStateMessage",
+      "type": "object"
+    },
+    "ScoreLine": {
+      "additionalProperties": false,
+      "properties": {
+        "player_id": {
+          "format": "uuid",
+          "title": "Player Id",
+          "type": "string"
+        },
+        "total": {
+          "title": "Total",
+          "type": "integer"
+        },
+        "gained": {
+          "title": "Gained",
+          "type": "integer"
+        },
+        "reasons": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reasons",
+          "type": "array"
+        }
+      },
+      "required": [
+        "player_id",
+        "total",
+        "gained",
+        "reasons"
+      ],
+      "title": "ScoreLine",
+      "type": "object"
+    },
+    "SnapshotMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "snapshot",
+          "default": "snapshot",
+          "title": "Type",
+          "type": "string"
+        },
+        "tick": {
+          "title": "Tick",
+          "type": "integer"
+        },
+        "phase_time_left": {
+          "title": "Phase Time Left",
+          "type": "number"
+        },
+        "acks": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Acks",
+          "type": "object"
+        },
+        "entities": {
+          "items": {
+            "$ref": "#/$defs/EntityState"
+          },
+          "title": "Entities",
+          "type": "array"
+        }
+      },
+      "required": [
+        "tick",
+        "phase_time_left",
+        "acks",
+        "entities"
+      ],
+      "title": "SnapshotMessage",
+      "type": "object"
+    }
+  },
+  "discriminator": {
+    "mapping": {
+      "auth_ok": "#/$defs/AuthOkMessage",
+      "error": "#/$defs/ErrorMessage",
+      "item_picked": "#/$defs/ItemPickedMessage",
+      "level_items": "#/$defs/LevelItemsMessage",
+      "match_ended": "#/$defs/MatchEndedMessage",
+      "match_started": "#/$defs/MatchStartedMessage",
+      "phase_changed": "#/$defs/PhaseChangedMessage",
+      "pong": "#/$defs/PongMessage",
+      "room_state": "#/$defs/RoomStateMessage",
+      "snapshot": "#/$defs/SnapshotMessage"
+    },
+    "propertyName": "type"
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/AuthOkMessage"
+    },
+    {
+      "$ref": "#/$defs/ErrorMessage"
+    },
+    {
+      "$ref": "#/$defs/RoomStateMessage"
+    },
+    {
+      "$ref": "#/$defs/MatchStartedMessage"
+    },
+    {
+      "$ref": "#/$defs/PhaseChangedMessage"
+    },
+    {
+      "$ref": "#/$defs/ItemPickedMessage"
+    },
+    {
+      "$ref": "#/$defs/SnapshotMessage"
+    },
+    {
+      "$ref": "#/$defs/LevelItemsMessage"
+    },
+    {
+      "$ref": "#/$defs/MatchEndedMessage"
+    },
+    {
+      "$ref": "#/$defs/PongMessage"
+    }
+  ]
+}
