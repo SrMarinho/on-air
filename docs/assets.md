@@ -17,30 +17,37 @@ Nomes: minúsculas, hífen, sem acento (`calouro-run.png`, `canhao-de-confete`).
 
 ## Animações de personagem
 
-Cada personagem tem `data/animations.json`. Os campos de **tempo** são autorais; os de
-**geometria** são gerados.
+As folhas em `characters/<personagem>/sprites/` são **fonte** (qualquer layout e escala). O jogo
+usa **atlas gerados** em `atlases/characters/<personagem>/`, que o script produz assim:
+
+1. separa cada quadro por componentes conectados, sem pixels vazando do quadro vizinho;
+2. iguala o tamanho do personagem entre folhas (altura do corpo + área do topete vs. `idle`);
+3. alinha todos os quadros no mesmo pivô (centro do tronco e pés), sem tremedeira;
+4. empacota em células uniformes (personagem do `idle` com 160 px de altura).
 
 ```jsonc
 "run": {
-  "texture": "calouro-run.png",   // autoral: arquivo em sprites/
-  "frames": 10,                   // autoral: total de quadros
-  "columns": 5,                   // autoral: quadros por linha da folha
-  "duration": 500,                // autoral: ms do ciclo inteiro
+  "texture": "calouro-run.png",   // autoral: folha fonte em sprites/
+  "frames": 10,                   // autoral
+  "columns": 5,                   // autoral: quadros por linha na folha fonte
+  "duration": 500,                // autoral: ms do ciclo
   "loop": true,                   // autoral
-  "next": "idle",                 // autoral (opcional): o que toca ao terminar
-  "frameWidth": 396,              // gerado
-  "frameHeight": 396,             // gerado
-  "anchor": { "x": 0.45, "y": 0.96 }, // gerado: pés do personagem no quadro
-  "scale": 1.06                   // gerado: iguala altura do personagem à do idle
+  "next": "idle",                 // autoral (opcional)
+  "scaleOverride": 0.6,           // autoral (opcional): força a escala relativa ao idle
+  "atlas": "atlases/characters/calouro/calouro-run.png", // gerado
+  "atlasColumns": 8, "frameWidth": 153, "frameHeight": 159, // gerado
+  "anchor": { "x": 0.5, "y": 0.97 },                       // gerado: pés
+  "relativeScale": 0.987                                   // gerado: escala usada
 }
 ```
 
 Depois de adicionar/alterar uma folha:
 
 ```bash
-uv run --no-project --with pillow python scripts/assets/build_animations.py assets/characters/calouro
+uv run --no-project --with pillow --with numpy --with scipy     python scripts/assets/build_animations.py assets/characters/calouro
 ```
 
+Se uma animação parecer maior/menor que as outras, ajuste `scaleOverride` e rode de novo.
 Folhas ausentes (ex.: `calouro-build.png`) são puladas; o cliente usa `idle` no lugar.
 
 ### Animações usadas pelo cliente

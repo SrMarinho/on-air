@@ -30,8 +30,7 @@ export class CharacterView {
     const next = this.controller.update(motion, (name) => !this.animation(name).loop)
     if (next !== this.playing.name) this.play(next)
     this.container.position.set(x + PHYSICS.playerWidth / 2, y + PHYSICS.playerHeight)
-    const scale = this.baseScale * this.playing.scale
-    this.sprite.scale.set(scale * this.controller.facing, scale)
+    this.sprite.scale.set(this.baseScale * this.controller.facing, this.baseScale)
   }
 
   destroy(): void {
