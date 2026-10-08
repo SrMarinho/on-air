@@ -47,7 +47,17 @@ def create_app(settings: Settings | None = None, database: Database | None = Non
     connections = ConnectionManager()
     levels = JsonLevelRepository()
     matches = MatchService(
-        factory=SessionFactory(levels, default_item_registry, PhysicsConfig(), MatchRules()),
+        factory=SessionFactory(
+            levels,
+            default_item_registry,
+            PhysicsConfig(),
+            MatchRules(
+                pick_seconds=settings.pick_seconds,
+                place_seconds=settings.place_seconds,
+                run_seconds=settings.run_seconds,
+                score_seconds=settings.score_seconds,
+            ),
+        ),
         broadcaster=connections,
         recorder=SqlMatchResultRecorder(database),
         simulation_hz=settings.simulation_hz,

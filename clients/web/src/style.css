@@ -46,6 +46,20 @@ body,
     @apply border-linha-forte bg-transparent text-texto;
     box-shadow: none;
   }
+  /* §17.4 panel and §17.2 text field */
+  .panel {
+    @apply rounded-lg border-3 border-tinta bg-fundo-elevado p-6;
+    box-shadow: 0 4px 0 var(--color-sombra-pop);
+  }
+  .field {
+    @apply flex flex-col gap-1 font-label text-sm font-extrabold tracking-[0.08em] text-texto-suave uppercase;
+  }
+  .field input {
+    @apply h-12 rounded-md border-3 border-linha-forte bg-fundo-poco px-4 font-sans text-lg font-medium tracking-normal text-texto normal-case outline-none;
+  }
+  .field input:focus-visible {
+    @apply border-foco;
+  }
   .chip {
     @apply rounded-sm border-3 border-tinta bg-fundo-elevado px-3 py-1 font-label text-sm font-extrabold tracking-[0.08em] uppercase;
   }

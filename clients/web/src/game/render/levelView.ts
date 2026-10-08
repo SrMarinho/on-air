@@ -94,7 +94,7 @@ function floorTileAt(
   return 'top'
 }
 
-function drawHazard(g: Graphics, r: Rect): void {
+export function drawHazard(g: Graphics, r: Rect): void {
   const band = world.hazardStripe.band / 2
   g.rect(r.x, r.y, r.w, r.h).fill(hex(sprite.dourado))
   for (let x = r.x - r.h; x < r.x + r.w; x += band * 2) {

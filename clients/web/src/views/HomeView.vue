@@ -8,8 +8,8 @@ import OnAirSign from '@/components/OnAirSign.vue'
     <div class="flex w-full max-w-sm flex-col items-center gap-6 text-center">
       <OnAirSign lit />
       <p class="text-texto-suave">O único programa onde o cenário quer te derrubar.</p>
-      <RouterLink to="/sandbox" class="btn btn-primario w-full"><GameIcon name="play" :size="20" />Treinar</RouterLink>
-      <button class="btn btn-secundario w-full" disabled title="Em breve"><GameIcon name="players" :size="20" />Jogar online</button>
+      <RouterLink to="/salas" class="btn btn-primario w-full"><GameIcon name="players" :size="20" />Jogar online</RouterLink>
+      <RouterLink to="/sandbox" class="btn btn-secundario w-full"><GameIcon name="play" :size="20" />Treinar</RouterLink>
     </div>
   </main>
 </template>

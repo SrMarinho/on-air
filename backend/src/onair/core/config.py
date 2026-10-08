@@ -17,6 +17,11 @@ class Settings(BaseSettings):
     snapshot_hz: int = 30
     max_players_per_room: int = 4
 
+    pick_seconds: float = 15.0
+    place_seconds: float = 20.0
+    run_seconds: float = 60.0
+    score_seconds: float = 4.0
+
 
 @lru_cache
 def get_settings() -> Settings:
