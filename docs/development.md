@@ -27,7 +27,10 @@ uv run uvicorn onair.main:app --reload
 | Exportar protocolo | `uv run python scripts/export_protocol.py` |
 
 Variáveis (`ONAIR_*`): `DATABASE_URL`, `JWT_SECRET`, `CORS_ORIGINS`, `SIMULATION_HZ`,
-`SNAPSHOT_HZ`, `MAX_PLAYERS_PER_ROOM`. Ver `core/config.py`.
+`SNAPSHOT_HZ`, `MAX_PLAYERS_PER_ROOM`, `PICK_SECONDS`, `PLACE_SECONDS`, `RUN_SECONDS`,
+`SCORE_SECONDS`. Ver `core/config.py`.
+
+Sem Docker: `ONAIR_DATABASE_URL="sqlite+aiosqlite:///./dev.db"` (o `aiosqlite` vem nas deps de dev).
 
 ## Cliente web
 
@@ -41,6 +44,7 @@ npm run test        # vitest
 
 - `publicDir` do Vite aponta para `assets/` na raiz: `/characters/calouro/...` funciona direto.
 - `@design/*` → `shared/design`, `@levels/*` → fases do backend (usadas no treino offline).
+- `.env` (ver `.env.example`): `VITE_API_URL` (padrão `http://localhost:8000`), `VITE_WS_URL` opcional.
 - Nunca use hex solto: cores vêm de `shared/design/tokens.json` (`npm run tokens` gera o CSS).
 
 ## Commits

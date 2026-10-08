@@ -9,13 +9,14 @@
 - [x] M4 Simulação do plataforma (60 Hz), snapshots (30 Hz), nível base
 - [x] M7 (lógica) Fases roleta → montagem → corrida → placar, registry de itens, pontuação
 - [x] Cliente web: treino offline com Calouro animado, câmera, tokens do design system
+- [x] **M5 Web online:** login/cadastro, salas, lobby, WS tipado com Zod, predição + reconciliação,
+      interpolação, HUD, roleta, montagem, Medidor de Audiência, fim de partida
 - [x] Treino: HUD (placa, cronômetro, placa J1, pausa "Voltamos já") e modo Montagem (grade, fantasma, válido/inválido, bandeja de itens)
 
 ## Próximo
 
-- [ ] **M5 Web online:** login/registro, lista e criação de salas, lobby, WS tipado com Zod,
-      render de snapshots, predição + reconciliação, interpolação, HUD (placa, cronômetro, placas de jogador)
-- [ ] Roleta (cartões de item) e montagem (cursor com fantasma, válido/inválido) no web
+Detalhes e ordem sugerida em [progress.md](progress.md).
+
 - [ ] **M6 Cliente Godot** (desktop): mesmo protocolo, mesmos assets
 - [ ] **M8 Mobile** (Godot Android/iOS): controles de toque
 - [ ] Momento Viral (rastrear dono da armadilha que eliminou)

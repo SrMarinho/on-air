@@ -21,10 +21,12 @@ uv run uvicorn onair.main:app --reload        # http://localhost:8000/docs
 cd clients/web && npm install && npm run dev  # http://localhost:5173
 ```
 
-O modo **Treinar** (`/sandbox`) roda offline, sem backend.
+O modo **Treinar** (`/sandbox`) roda offline, sem backend. **Jogar online** exige o backend
+(sem Docker, use SQLite: veja [docs/progress.md](docs/progress.md#para-retomar)).
 
 ## Documentação
 
+- **[Progresso — onde paramos](docs/progress.md)**
 - [Arquitetura](docs/architecture.md) — módulos, ECS, servidor autoritativo, SOLID
 - [Protocolo WebSocket](docs/protocol.md) — mensagens, fluxo de partida
 - [Gameplay](docs/gameplay.md) — fases, física, itens, pontuação
