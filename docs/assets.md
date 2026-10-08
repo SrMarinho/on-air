@@ -44,7 +44,7 @@ usa **atlas gerados** em `atlases/characters/<personagem>/`, que o script produz
 Depois de adicionar/alterar uma folha:
 
 ```bash
-uv run --no-project --with pillow --with numpy --with scipy     python scripts/assets/build_animations.py assets/characters/calouro
+uv run --no-project --with pillow --with numpy --with scipy python scripts/assets/build_animations.py assets/characters/calouro
 ```
 
 Se uma animação parecer maior/menor que as outras, ajuste `scaleOverride` e rode de novo.
