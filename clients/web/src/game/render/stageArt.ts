@@ -32,6 +32,8 @@ export type FloorTile =
 
 export interface ItemArt {
   texture: Texture
+  /** Full image URL, for DOM previews (item cards). */
+  url: string
   tiles: { w: number; h: number }
   category: z.infer<typeof itemsSchema>[string]['category']
 }
@@ -59,9 +61,11 @@ export async function loadStageArt(): Promise<StageArt> {
   const items = Object.fromEntries(
     await Promise.all(
       Object.entries(itemsSpec).map(async ([key, spec]) => {
-        const sheet = await Assets.load<Texture>(`${ITEMS_DIR}/${spec.texture}`)
+        const url = `${ITEMS_DIR}/${spec.texture}`
+        const sheet = await Assets.load<Texture>(url)
         const art: ItemArt = {
           texture: spec.bounds ? crop(sheet, spec.bounds) : sheet,
+          url,
           tiles: spec.tiles,
           category: spec.category,
         }

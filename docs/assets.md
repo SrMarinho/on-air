@@ -95,6 +95,30 @@ Depois de adicionar item ou tileset:
 uv run --no-project --with pillow python scripts/assets/build_sprite_manifests.py
 ```
 
+## Interface (`assets/ui/`)
+
+As folhas autorais ficam em `ui/sheets/` (`ui-kit.png`, `hud-kit.png`, `build-controls.png`,
+`icons.png`). O script fatia cada elemento (ordem: linha a linha, da esquerda para a direita),
+remove o brilho externo e mantém interiores translúcidos:
+
+```bash
+uv run --no-project --with pillow --with numpy --with scipy python scripts/assets/build_ui.py
+```
+
+| Pasta | Conteúdo |
+|---|---|
+| `ui/icons/` | 24 ícones (§18): play, pause, settings, players, microphone, trophy, crown, timer, sound, mute, gamepad, key, copy, share, exit, check, close, back, star, gong, chat, replay, lock, offline |
+| `ui/buttons/` | Referência visual dos botões (primário, secundário, destaque, perigoso) |
+| `ui/controls/` | Campo de texto, código, toggle, slider, abas, chips pronto/aguardando |
+| `ui/cards/` | Painel, cartão de item, toast, modal de confirmação |
+| `ui/hud/` | Placa ON AIR, cronômetro, rodada, pausa, placas J1–J4, nome no mundo, coroa, seta fora de tela, legenda, barra de tempo, dicas, alerta "Momento viral!" |
+| `ui/cursors/` | Moldura válida/inválida, mão de construção, bloco fantasma |
+| `effects/telegraphs/` | Caminhos horizontal/vertical/giro e cruz de explosão |
+
+`ui/ui.json` mapeia nome → arquivo. Elementos com texto embutido (JOGAR, SAIR…) servem de
+referência visual; a interface real é feita em Vue com texto vivo (localização, §21.2).
+A nova folha precisa ter o mesmo número de elementos da lista em `build_ui.py`.
+
 ## Tokens de design
 
 `shared/design/tokens.json` é a fonte única de cores, fontes, espaçamentos, raios, movimento,

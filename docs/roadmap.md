@@ -9,6 +9,7 @@
 - [x] M4 Simulação do plataforma (60 Hz), snapshots (30 Hz), nível base
 - [x] M7 (lógica) Fases roleta → montagem → corrida → placar, registry de itens, pontuação
 - [x] Cliente web: treino offline com Calouro animado, câmera, tokens do design system
+- [x] Treino: HUD (placa, cronômetro, placa J1, pausa "Voltamos já") e modo Montagem (grade, fantasma, válido/inválido, bandeja de itens)
 
 ## Próximo
 

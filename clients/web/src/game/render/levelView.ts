@@ -22,6 +22,13 @@ export class LevelView {
     this.drawGoal(level.goal, art.items['golden-microphone'])
   }
 
+  /** Placed structure: art stretched to its exact tile footprint so it reads as the collider. */
+  addItem(art: ItemArt, area: Rect): void {
+    const s = this.place(art.texture, area.x, area.y)
+    s.width = area.w
+    s.height = area.h
+  }
+
   private drawFloor(level: ParsedLevel, art: StageArt): void {
     const { rows } = level.layout
     const size = world.tileSize
